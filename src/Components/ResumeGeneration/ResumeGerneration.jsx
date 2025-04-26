@@ -29,12 +29,16 @@ const ResumeGeneration = () => {
 
   const getUserDataAsync = async ()=>{
     try {
+      setLoading(true);
       const res = await axios.get(`/GetLinkedInData`,{params:{linkedInProfileLink}});
       const data = res?.data;
       console.log(data);
       setFormData(data);
     } catch (error) {
       console.error(error);
+    }
+    finally{
+      setLoading(false);
     }
   }
 
